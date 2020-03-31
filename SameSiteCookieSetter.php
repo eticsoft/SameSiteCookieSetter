@@ -1,8 +1,12 @@
 <?php
 /**
- * @author Ovunc Tukenmez <ovunct@live.com>
- * @version 1.1.0
- * Date: 28.03.2020
+ * Update
+ * @author Mahmut GÜLERCE <info@eticsoft.com>
+ * @version 1.1.1
+ * Date: 31.03.2020
+/**
+ * @author Original Author Ovunc Tukenmez <ovunct@live.com>
+ * https://github.com/ovunctukenmez/SameSiteCookieSetter
  *
  * This class adds samesite parameter for cookies created by session_start function.
  * The browser agent is also checked against incompatible list of browsers.
@@ -31,8 +35,8 @@ class SameSiteCookieSetter
             unset($options['secure']);
 
             $expires = isset($options['expires']) ? $options['expires'] : 0;
-            $path = isset($options['path']) ? $options['path'] : '';
-            $domain = isset($options['domain']) ? $options['domain'] : '';
+            $path = isset($options['path']) ? $options['path'] : '/';
+            $domain = isset($options['domain']) ? $options['domain'] : ini_get('session.cookie_domain');
             $is_httponly = isset($options['httponly']) ? boolval($options['httponly']) : false;
 
             $result = setcookie($name,$value,$expires,$path,$domain);
